@@ -19,22 +19,43 @@ public class TicTacToeMain {
 		while (true) {
 			// player takes a turn
 			playerTurn(gameBoard, scanner);	
+			
 			if (isGameFinished(gameBoard)) {
-				break;
+				System.out.println("Do you want to play again? Press 1 to reset or any key to exit.");
+				int option = scanner.nextInt();
+				if (option == 1) {
+					for (int i = 0; i < gameBoard.length; i++) {
+						for (int j = 0; j < gameBoard[i].length; j++) {
+							gameBoard[i][j] = ' ';
+						}
+					}
+				} else {
+					break;
+				}
 			};
 			
 			// computer takes a turn
 			computerTurn(gameBoard);
+			
 			if (isGameFinished(gameBoard)) {
-				break;
+				System.out.println("Do you want to play again? Press 1 to reset or any key to exit.");
+				int option = scanner.nextInt();
+				if (option == 1) {
+					for (int i = 0; i < gameBoard.length; i++) {
+						for (int j = 0; j < gameBoard[i].length; j++) {
+							gameBoard[i][j] = ' ';
+						}
+					}
+				} else {
+					break;
+				}
 			};
 			
 			// print the board again after the moves
 			printBoard(gameBoard);
 		}
-		scanner.close();
-	}
-
+		
+		}
 	private static boolean isGameFinished(char[][] gameBoard) {
 		if (hasPlayerWon(gameBoard, 'X')) {
 			printBoard(gameBoard);
@@ -124,8 +145,6 @@ public class TicTacToeMain {
 			input = scanner.nextLine();
 			if (isValidMove(gameBoard, input)) {
 				break;
-			} else {
-				System.out.println(input + " is not a valid move, try again!");
 			}
 			System.out.println(input);
 		}
